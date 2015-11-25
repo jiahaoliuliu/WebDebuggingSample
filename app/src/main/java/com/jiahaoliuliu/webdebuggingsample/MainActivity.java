@@ -1,5 +1,6 @@
 package com.jiahaoliuliu.webdebuggingsample;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -22,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         mWebView.setWebViewClient(new WebViewClient());
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
+
         mWebView.loadUrl(WEB_URL);
     }
 }
